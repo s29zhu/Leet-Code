@@ -19,6 +19,14 @@ Constraints:
 strs[i] consists only of digits '0' and '1'.
 1 <= m, n <= 100
  */
+/*
+ * Dynamic Programming:
+ * Input: strs = ["10","0001","111001","1","0"], m = 5, n = 3
+ * in:m=0,n=0 ->0
+ * m=1, n=0 -> 1
+ * m=0, n=1 -> 1;
+ * m=1, n=1 -> M[m][n]=Math.max(M[m-i][n-j]+M[i][j], M[m][n])
+ */
 public class OnesandZeroes {
     public static int findMaxForm(String[] strs, int m, int n) {
         int [][] matrix=new int[m+1][n+1];

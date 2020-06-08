@@ -1,8 +1,5 @@
 package leetcode.medium;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /*
  * Write a program to find the nth super ugly number.
 

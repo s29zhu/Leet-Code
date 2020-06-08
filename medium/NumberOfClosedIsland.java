@@ -70,8 +70,7 @@ public class NumberOfClosedIsland {
 		return res;
 	}
 	public static void main(String []args) {
-		int [][]grid1={{1,1,1,1,1,1,1,0},{1,0,0,0,0,1,1,0},{1,0,1,0,1,1,1,0},{1,0,0,0,0,1,0,1},{1,1,1,1,1,1,1,0}};
-		int [][]grid={{1,0,1}};
+		int [][]grid={{1,1,1,1,1,1,1,0},{1,0,0,0,0,1,1,0},{1,0,1,0,1,1,1,0},{1,0,0,0,0,1,0,1},{1,1,1,1,1,1,1,0}};
 		System.out.print(closedIsland(grid));
 		//func(grid);
 		//for(int i=0; i<grid.length;i++) System.out.print(grid[i][0]+" ");
