@@ -32,10 +32,10 @@ import java.util.HashMap;
 /*
  * Analysis:
  * 1. A and B have the same length n
- * 2. hashmaps to count the value number, 
- * 3. i iterate from 0 to l-1, if Both A[i] and B[i] have the same value, only increase one
- * 4. if the maximum value v number n, is less than l, return -1; else proceed to step 5
- * 5. Iterate A again, count the number of V in A, if n<l/2, return n, else return l-n; 
+ * 2. 1 hashmap map1 to count the # of columns containing a number V, if there are two same number in the same column # only increase 1 
+ * 3. 1 hashmap mapA to count the # of columns in A containing number V, 1 hashmap mapB to conunt the # of columns in B containing the count
+ * 4. if the maximum value v number n<l, return -1; else proceed to step 5
+ * 5. iterate though map1, get the Vs with count larger than n, n-Math.max(mapA[],mapB[])
  */
 public class MinimumDominoRotationsForEqualRow {
     public static int minDominoRotations(int[] A, int[] B) {

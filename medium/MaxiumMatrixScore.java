@@ -13,10 +13,14 @@ Return the highest possible score.
 
 Example 1:
 
-Input: [[0,0,1,1],[1,0,1,0],[1,1,0,0]]
+Input: [[0,0,1,1],
+		[1,0,1,0],
+		[1,1,0,0]]
 Output: 39
 Explanation:
-Toggled to [[1,1,1,1],[1,0,0,1],[1,1,1,1]].
+Toggled to [[1,1,1,1],
+			[1,0,0,1],
+			[1,1,1,1]].
 0b1111 + 0b1001 + 0b1111 = 15 + 9 + 15 = 39
  
 
@@ -49,7 +53,7 @@ public class MaxiumMatrixScore {
 			one = 0;
 			value *= 2;
 			for (int j = 0; j < R; j++) one+=A[j][i];	
-			if ((R-one) > one)  value += (R-one); else value += one;
+			value+=((R-one) > one)?(R-one):one;
 		}
 		return value;
 	}

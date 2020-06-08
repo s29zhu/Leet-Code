@@ -19,6 +19,10 @@ n=1 ()
 n=2 ()() (())
 n=3 ()()()  ()(())  (())()  (()())   ((()))
  */
+/*
+ * i iterate from 0 to n, 
+ * left are parenthesis generated from i, right are parenthesis generated from n-i-1
+ */
 public class GenerateParentheses {
     public static List<String> generateParenthesis(int n) {
         List<String> list=new ArrayList<String>(),left=new ArrayList<String>(),right=new ArrayList<String>();

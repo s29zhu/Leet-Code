@@ -33,8 +33,6 @@ Constraints:
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Vector;
-
 /*
  Analysis:
  start from (0,0), iterate through, encounter 0, mark 2, then check itself, i=0,m-1, j=0,n-1? ->false

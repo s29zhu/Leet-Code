@@ -30,7 +30,7 @@ N will be an integer in the range [1, 30].
 K will be an integer in the range [1, 2^(N-1)].
  */
 
-/*
+/*Analysis
  * 						0
  * 					/       \
  * 				   0         1

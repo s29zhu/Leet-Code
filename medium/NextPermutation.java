@@ -1,7 +1,5 @@
 package leetcode.medium;
 
-import java.util.Arrays;
-
 /*
  * Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
 
@@ -11,14 +9,17 @@ The replacement must be in-place and use only constant extra memory.
 
 Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
 
-1,2,3 → 1,3,2
-3,2,1 → 1,2,3
-1,1,5 → 1,5,1
+1,2,3 →  1,3,2
+1,3,2 -> 2,1,3
+2,1,3 -> 2,3,1
+3,2,1 →  1,2,3
+1,1,5 →  1,5,1
 
 1234-> 1243 -> 1324 -> 1342 -> 1423 -> 1432 
 
 4321->1234
  */
+
 /*
 Analysis
 int i range from l-1 to 0, , find a min nums[j], i<j<l and nums[j] > nums[i], 

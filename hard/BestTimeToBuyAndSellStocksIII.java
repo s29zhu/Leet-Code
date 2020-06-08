@@ -27,7 +27,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
  */
 
 /*1 2 3 4 5 1 5 
-
+ * 
 brutal force
 l, 
 j iterate from 0 to l-1
@@ -61,6 +61,8 @@ return p[l-1][1]
 */
 public class BestTimeToBuyAndSellStocksIII {
     public static int maxProfit(int[] prices) {
+    	//b1: first buy 1
+    	//s2: second sell
         int res=0, l=prices.length, b1, s2;
         int [] p1=new int[l],p2=new int[l];
         if(l==0||l==1) return res;
