@@ -76,6 +76,7 @@ public class MinimumWindowSubsequence {
         }
         return ans[0] >= 0 ? S.substring(ans[0], ans[1] + 1) : "";
     }
+    //time limit exceeds
     public static String minWindowI(String S, String T) {
         String res="", sub="";
         int l=S.length()+1;
