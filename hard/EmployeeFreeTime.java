@@ -37,8 +37,11 @@ Constraints:
  */
 public class EmployeeFreeTime {
 	/*
-	 * Intuition: 1. Get all the working time span, and then get the non-working
-	 * time
+	 * Intuition: 1
+	 * 1. Get all the working time span, sort and merge the list
+	 * 2. Get the non-working time span and return them
+	 * Time Complexity: O(nlogn)
+	 * Space Complexity: O(n)
 	 */
 	public static List<EmployeeInterval> merge(List<EmployeeInterval> busy, EmployeeInterval val) {
 		EmployeeInterval cur = val;
