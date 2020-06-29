@@ -1,4 +1,6 @@
 package leetcode.easy;
+import structures.TreeNode;
+
 
 public class SymmetricTree {
     public static boolean isMirror(TreeNode t1, TreeNode t2) {

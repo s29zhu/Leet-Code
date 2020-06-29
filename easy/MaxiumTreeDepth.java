@@ -1,4 +1,6 @@
 package leetcode.easy;
+import structures.TreeNode;
+
 
 public class MaxiumTreeDepth {
     public int maxDepth(TreeNode root) {

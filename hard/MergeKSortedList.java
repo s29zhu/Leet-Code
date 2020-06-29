@@ -12,16 +12,15 @@ Input:
 ]
 Output: 1->1->2->3->4->4->5->6
  */
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
+
+class ListNode {
+     int val;
+     ListNode next;
+     ListNode() {}
+     ListNode(int val) { this.val = val; }
+     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+}
+
 public class MergeKSortedList {
     public static ListNode mergeKLists(ListNode[] lists) {
         ListNode head=null, cur=null, min=null;

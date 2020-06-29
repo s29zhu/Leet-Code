@@ -1,4 +1,5 @@
 package leetcode.easy;
+import structures.ListNode;
 /*
  * https://leetcode.com/problems/reverse-linked-list/
  * Reverse a singly linked list.
@@ -12,13 +13,6 @@ Follow up:
 A linked list can be reversed either iteratively or recursively. Could you implement both?
  */
 
-class ListNode {
-     int val;
-     ListNode next;
-     ListNode() {}
-     ListNode(int val) { this.val = val; }
-     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- }
 public class ReverseLinkedList {
 	public ListNode helper(ListNode l1, ListNode l2) {
 		if(l2==null) return l1;

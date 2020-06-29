@@ -1,4 +1,6 @@
 package leetcode.easy;
+import structures.TreeNode;
+
 /*
  * Find the sum of all left leaves in a given binary tree.
 

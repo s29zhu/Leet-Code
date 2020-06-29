@@ -1,7 +1,8 @@
-package leetcode.medium.depthsearch;
+package leetcode.medium;
 import java.util.ArrayList;
-import leetcode.medium.depthsearch.ListNode;
-import leetcode.medium.depthsearch.TreeNode;
+
+import leetcode.medium.ListNode;
+import leetcode.medium.TreeNode;
 
 
 /*
@@ -18,6 +19,19 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
    /   /
  -10  5
  */
+class ListNode {
+	int val;
+	ListNode next;
+	ListNode(int x) { val = x; }
+}
+
+class TreeNode {
+	int val;
+	TreeNode left;
+	TreeNode right;
+	TreeNode(int x) { val = x; }
+}
+
 public class ConvertSortedListToBST {
     public static TreeNode sortedListToBST(ListNode head) {
         ArrayList<Integer> array=listToArray(head);

@@ -1,4 +1,5 @@
 package leetcode.easy;
+import structures.TreeNode;
 import java.util.List;
 import java.util.Queue;
 import java.util.ArrayList;
