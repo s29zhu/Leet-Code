@@ -43,7 +43,7 @@ public class DesignCompressedStringIterator {
     }
     
     public char next() {
-    	if(index<this.counter) {index++; return ch;}
+    	if(index<this.counter) {index++;}
     	else {    		
     		if(next_i>=s.length()) return ' ';
     		index=next_i;
@@ -59,7 +59,6 @@ public class DesignCompressedStringIterator {
     public boolean hasNext() {
         if(index<this.counter || next_i<s.length()) return true;
         else  return false;
-
     }
     
     public static void main(String args[]) {
