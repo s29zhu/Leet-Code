@@ -26,33 +26,26 @@ The given node will always be the first node with val = 1. You must return the c
  */
 public class CloneGraph {
     public static Node cloneGraph(Node node) {
-    	Node nc=null, c=null, res=nc;
+    	Node c=null;
     	LinkedList<Node> q=new LinkedList<Node>();
     	HashMap<Integer, Node> map=new HashMap<Integer, Node>();
     	
     	if(node==null) return null;
     	
     	q.add(node);  
-    	nc=new Node(node.val);
-    	map.put(node.val, nc);
-    	res=nc;
+    	map.put(node.val, new Node(node.val));
     	while(!q.isEmpty()) {
     		c=q.poll();
-			if(c.neighbors==null) continue;
-			for(Node item: c.neighbors) {
-				if(map.getOrDefault(item.val,null)==null) {
-					q.add(item);
-					nc=new Node(item.val);
-					map.put(item.val,nc);
-					map.get(c.val).neighbors.add(nc);
-				}else {
-					nc=map.get(item.val);
-					map.get(c.val).neighbors.add(nc);
-				}
-			}    		
+    		for(Node n: c.neighbors) {
+    			if(!map.containsKey(n.val)) {
+    				map.put(n.val, new Node(n.val));
+    				q.add(n);
+    			}
+				map.get(c.val).neighbors.add(map.get(n.val));
+    		}   		
     	}
-    	map.clear();
-    	return res;
+
+    	return map.get(node.val);
     }
     
     public static void main(String arg[]) {
