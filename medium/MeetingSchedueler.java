@@ -37,46 +37,30 @@ slots2[i][0] < slots2[i][1]
 public class MeetingSchedueler {
     public static List<Integer> minAvailableDuration(int[][] slots1, int[][] slots2, int duration) {
         List<Integer> res=new ArrayList<Integer>();
-        ArrayList<int[]> l1=new ArrayList<int[]>();
-        ArrayList<int[]> l2=new ArrayList<int[]>();
-        //put the slots from slots1 and slots2 into slots
-        for(int i=0; i<slots1.length;i++) l1.add(slots1[i]);
-        for(int i=0; i<slots2.length;i++) l2.add(slots2[i]);
+        int l1=slots1.length, l2=slots2.length;
         //sort slots based on the first element
-        l1.sort((slot1, slot2)->{
+        Arrays.sort(slots1, (slot1, slot2)->{
         	return slot1[0]-slot2[0];
         });
-        l2.sort((slot1, slot2)->{
+        Arrays.sort(slots2, (slot1, slot2)->{
         	return slot1[0]-slot2[0];
-        }); 
+        });
      
-        for(int i=0; i<l1.size();i++) {
-        	for(int j=0;j<l2.size();j++) {
+        for(int i=0; i<l1;i++) {
+        	for(int j=0;j<l2;j++) {
         		// possible overlaps, h1-l2, h2-l1, h2-l2, h1-l1
-        		int overlap=Integer.MAX_VALUE;
         		int start=0;
-        		int temp=l1.get(i)[1]-l2.get(j)[0];
-        		if(temp < duration) break;
-        		overlap=temp;
-        		start=l2.get(j)[0];
-        		temp=l2.get(j)[1]-l1.get(i)[0];
-        		if(temp<duration) continue;
-        		if(temp < overlap ) {
-        			start=l1.get(i)[0];
-        			overlap=l2.get(j)[1]-l1.get(i)[0];
-        		}
-        		temp=l1.get(i)[1]-l1.get(i)[0];
-        		if(temp < duration) break;
-        		if(temp < overlap) {
-        			start=l1.get(i)[0];
-        			overlap=l1.get(i)[1]-l1.get(i)[0];
-        		}
-        		temp=l2.get(j)[1]-l2.get(j)[0];
-        		if(temp < duration) continue;
-        		if(temp < overlap) {
-        			start=l2.get(j)[0];
-        			overlap=l2.get(j)[1]-l2.get(j)[0];
-        		}
+        		int temp1=slots1[i][1]-slots2[j][0];
+                int temp2=slots2[j][1]-slots1[i][0];
+                int temp3=slots1[i][1]-slots1[i][0];
+                int temp4=slots2[j][1]-slots2[j][0];
+        		if(temp1 < duration || temp3 < duration) break;
+                if(temp2 < duration || temp4 < duration) continue;
+        		
+                if((temp1<=temp2 && temp1<=temp3 && temp1<=temp4)||
+                   (temp4<=temp1 && temp4<=temp2 && temp4<=temp3) )
+                    start=slots2[j][0];
+                else start=slots1[i][0];
         		res.add(start);
         		res.add(start+duration);
         		return res;
@@ -86,8 +70,9 @@ public class MeetingSchedueler {
     }
     
     public static void main(String args[]) {
-    	int[][] slots1= {{7,13}},    					
+    	int[][] slots1= {{7,13},{6,8},{5,8}},    					
     			slots2= {{9,15}};
     	minAvailableDuration(slots1, slots2, 2);
+
     }
 }
