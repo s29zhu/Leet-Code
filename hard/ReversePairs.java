@@ -140,6 +140,7 @@ public class ReversePairs {
 			//query_index is the left most index with value no less than 2*nums[i]+1
 			target=2*nums[i]+1;
 			query_index=helper(copy, target);
+			//overflow, when the 2*nums[i]+1 
 			if(nums[i]<0 && target>0) {query_index=0;}
 			//overflow or cannot find value no less than target, giving up the query
 			if((nums[i]>0 && target<0 ) || query_index<0) { 
