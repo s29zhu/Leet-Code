@@ -1,6 +1,5 @@
-package leetcode.hard;
 
-import java.util.ArrayList;
+package leetcode.hard;
 import java.util.Arrays;
 import java.util.List;
 
@@ -69,7 +68,6 @@ public class CountOfSmallerNumbersAfterSelf {
     
     public static void main(String args[]) {
     	int []nums={5,2,6,1,1};
-    	List<Integer> list=countSmaller(nums);
-    	System.out.println("done\n");
+    	countSmaller(nums);
     }
 }

@@ -31,7 +31,6 @@ Output: [[5,6],[7,9]]
  
 
 Constraints:
-
 1 <= schedule.length , schedule[i].length <= 50
 0 <= schedule[i].start < schedule[i].end <= 10^8
  */
@@ -92,7 +91,6 @@ public class EmployeeFreeTime {
 		List<List<EmployeeInterval>> schedule = new ArrayList<List<EmployeeInterval>>();
 		List<EmployeeInterval> l1 = new ArrayList<EmployeeInterval>();
 		List<EmployeeInterval> l2 = new ArrayList<EmployeeInterval>();
-		List<EmployeeInterval> l3 = new ArrayList<EmployeeInterval>();
 		// [[[1,3],[6,7]],[[2,4]],[[2,5],[9,12]]]
 		// [[[1,2],[5,6]],[[1,3]],[[4,10]]]
 		// [[[45,56],[89,96]],[[5,21],[57,74]]]

@@ -98,7 +98,7 @@ At the end, we again jump over the indices as per the nextnext array and put the
         int[] next = new int[A.length];
         long[] dp = new long[A.length];
         Arrays.fill(next, -1);
-        List < Integer > res = new ArrayList();
+        List < Integer > res = new ArrayList<Integer>();
         for (int i = A.length - 2; i >= 0; i--) {
             long min_cost = Integer.MAX_VALUE;
             for (int j = i + 1; j <= i + B && j < A.length; j++) {
