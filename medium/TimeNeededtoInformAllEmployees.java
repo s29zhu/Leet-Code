@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class NumOfList {
+public class TimeNeededtoInformAllEmployees{
     public static int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {
         Queue<Integer> que=new LinkedList<Integer>();
         HashMap<Integer, List<Integer>> map=new HashMap<Integer, List<Integer>>();
