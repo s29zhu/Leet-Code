@@ -1,5 +1,6 @@
+package leetcode.easy;
+
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 /*
  * Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
