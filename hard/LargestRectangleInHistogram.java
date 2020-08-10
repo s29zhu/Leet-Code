@@ -19,6 +19,7 @@ public class LargestRectangleInHistogram {
         }
         return res;
     }
+
     public static int extend(int i, int[] heights) {
     	int res=0;
     	for(int j=i;j>=0;j--) {
@@ -26,7 +27,12 @@ public class LargestRectangleInHistogram {
     			res+=heights[i];
     		}else break;
     	}
-    	return res;
+    	for(int j=i;j<heights.length;j++) {
+    		if(heights[j]>=heights[i]) {
+    			res+=heights[i];
+    		}else break;
+    	}
+    	return res-heights[i];
     }
     
     public static int largestRectangleAreaI(int[] heights) {
@@ -34,6 +40,7 @@ public class LargestRectangleInHistogram {
         stack.push(-1);
         int maxarea = 0;
         for (int i = 0; i < heights.length; ++i) {
+        	//keep extending if the next element is taller than heights[i]
             while (stack.peek() != -1 && heights[stack.peek()] >= heights[i])
                 maxarea = Math.max(maxarea, heights[stack.pop()] * (i - stack.peek() - 1));
             stack.push(i);
