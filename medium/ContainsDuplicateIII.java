@@ -1,7 +1,6 @@
 package leetcode.medium;
 
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.TreeSet;
 
 /*
  * Given an array of integers, find out whether there are two distinct indices i and j in the array such that the absolute 
@@ -21,19 +20,30 @@ Input: nums = [1,5,9,1,5,9], k = 2, t = 3
 Output: false
  */
 public class ContainsDuplicateIII {
+	/*
+	 * understanding, 
+	 * find pair i and j, j-i<=K, so that |nums[i]-nums[j]|<=t
+	 * 
+	 * intuition
+	 * put first K elements in the tree, get the k+1-th element, and put it in the tree too, get the neigbours of k+1th element, 
+	 * and get the difference, it the difference is less than t, return true;
+	 */
     public static boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         boolean res=false;
-        Queue<Integer> que=new PriorityQueue<Integer>();
+        TreeSet<Integer> treeset=new TreeSet<Integer>();
+        if(nums.length<=0) return res;
         for(int i=0; i<nums.length; i++) {
-        	if(que.size()<k) {
-        		int diff=(int) Math.abs(nums[i]-que.peek());
-        		que.add(nums[i]);
-        	}
-        	for(int j=i; j<=k && j<nums.length; j++) {
-        		dis_max=Math.max(diff, dis_max);
-        	}
-        	if(dis_max<t) return true;
+        	Integer s_neighbour=treeset.floor(nums[i]), b_neighbour=treeset.ceiling(nums[i]);
+        	if((s_neighbour!=null && (long)nums[i]-(long)s_neighbour<=t)
+        			|| (b_neighbour!=null &&(long)b_neighbour-(long)nums[i]<=t)) return true;
+        	treeset.add(nums[i]);
+        	if(treeset.size()>k)
+        		treeset.remove(nums[i-k]);
         }
         return res;
+    }
+    public static void main(String args[]) {
+    	int []nums= {1,2,3,1}; 
+    	System.out.println(containsNearbyAlmostDuplicate(nums,3,0));
     }
 }
