@@ -48,16 +48,7 @@ Constraints:
  */
 public class JumpGameV {
 	
-    public int maxJumps(int[] arr, int d) {
-        int[] mem = new int[arr.length];
-        int max = 0;
-        for(int i = 0; i < arr.length; i++) {
-            max = Math.max(dfs(arr, d, i, mem), max);
-        }
-        return max;
-    }
-    
-    private int dfs(int[] arr, int d, int curr, int[] mem) {
+    private static int dfs(int[] arr, int d, int curr, int[] mem) {
         if(mem[curr] != 0) return mem[curr];
         int maxJumps = 1;
 		// Iterate left part.
@@ -77,6 +68,16 @@ public class JumpGameV {
         mem[curr] = maxJumps;
         return maxJumps;
     }
+    public static int maxJumps(int[] arr, int d) {
+        int[] mem = new int[arr.length];
+        int max = 0;
+        for(int i = 0; i < arr.length; i++) {
+            max = Math.max(dfs(arr, d, i, mem), max);
+        }
+        return max;
+    }
+    
+
 	/*
 	 * intuition
 	 * dynamic programming

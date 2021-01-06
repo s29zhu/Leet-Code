@@ -1,7 +1,9 @@
 package leetcode.medium;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
 /*
@@ -30,47 +32,38 @@ cache.get(1);       // returns -1 (not found)
 cache.get(3);       // returns 3
 cache.get(4);       // returns 4
  */
-public class LRU {
-	int size;
-	HashMap<Integer, Integer> map;
-	Queue<Integer> que;
+class LRU extends LinkedHashMap<Integer, Integer>{
+    private int capacity;
+    
     public LRU(int capacity) {
-        this.size=capacity;
-        que=new LinkedList<Integer>();
-        map=new HashMap<Integer, Integer>();
+        super(capacity, 0.75F, true);
+        this.capacity = capacity;
     }
-    
+
     public int get(int key) {
-    	if(map.keySet().contains(key)) {
-    		que.remove(key);
-    		que.add(key);
-    		return this.map.get(key);
-    	}else return -1;
+        return super.getOrDefault(key, -1);
     }
-    
+
     public void put(int key, int value) {
-        if(!map.keySet().contains(key) && map.size()<size) {
-        	que.add(key);
-            map.put(key, value);
-        }else if(map.keySet().contains(key)) {
-        	map.put(key, value);
-        	que.remove(key);
-        	que.add(key);
-        }else if(!map.keySet().contains(key) && map.size()==size) {
-        	int remove_key=que.poll();
-        	que.add(key);
-        	map.remove(remove_key);
-        	map.put(key, value);
-        }
+        super.put(key, value);
     }
-    
+
+    @Override
+    protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+        return size() > capacity; 
+    }
+	
     public static void main(String args[]) {
     	LRU cache=new LRU(2);
-    	cache.put(2, 1);
+    	//[[2],[1,1],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]
     	cache.put(1, 1);
-    	cache.put(2, 3);
-    	cache.put(4, 1);
+    	cache.put(2, 2);
+    	System.out.println(cache.get(1)); 
+    	cache.put(3, 3);
+    	System.out.println(cache.get(2)); 
+    	cache.put(4, 4);
     	System.out.println(cache.get(1));  
-    	System.out.println(cache.get(2));
+    	System.out.println(cache.get(3));
+    	System.out.println(cache.get(4));
     }
 }

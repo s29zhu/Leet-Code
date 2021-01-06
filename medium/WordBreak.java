@@ -1,6 +1,7 @@
 package leetcode.medium;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /*
@@ -27,6 +28,30 @@ Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
 Output: false
  */
 public class WordBreak {
+	
+	//BST
+	/*
+	 * 
+	 */
+	public static boolean wordBreakI(String s, List<String> wordDict) {
+		boolean res=false;
+		int length=s.length();
+		LinkedList<Integer> que=new LinkedList<Integer>();
+		if(length==0) return true;
+		
+		for(String w: wordDict) {
+			int l=w.length();
+			if(s.length()<l) continue;
+			String str=s.substring(0,l);
+			if(str.equals(w)) {
+				res=wordBreakI(s.substring(l), wordDict);
+				if(res==true) return res;
+			}
+		}
+		return res;
+	}
+	
+	//Dynamic programming
     public static boolean wordBreak(String s, List<String> wordDict) {
     	int n=s.length();
     	boolean []res=new boolean[n+1];
@@ -45,13 +70,13 @@ public class WordBreak {
     }
     
     public static void main(String args[]) {
-    	String  s = "leetleetcode";
+    	String  s = "cars";
     	List<String> wordDict = new ArrayList<String>();
-    	wordDict.add("leet");
-    	wordDict.add("code");
+    	wordDict.add("ca");
+    	wordDict.add("rs");
     	wordDict.add("version");
     	
     	//System.out.println("leetcode".equals(s));
-    	System.out.print(wordBreak(s, wordDict));
+    	System.out.print(wordBreakI(s, wordDict));
     }
 }
