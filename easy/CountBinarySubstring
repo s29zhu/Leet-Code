@@ -1,0 +1,33 @@
+class Solution {
+    public int countBinarySubstrings(String s) {
+        if(s.isEmpty()) return 0;
+        int count0 = 0, count1 = 0, ret = 0;
+        char pre_c = s.charAt(0);
+        if (s.charAt(0)=='0' )
+            count0++;
+        else
+            count1++;
+        
+        for(int i = 1; i< s.length(); i++)
+        {
+            if(s.charAt(i) == '0' ) 
+            {
+                if(pre_c == s.charAt(i))
+                    count0++;
+                else
+                    count0=1;
+                if(count1 >= count0) ret++;
+                pre_c = '0';
+            }else
+            {
+                if(pre_c == s.charAt(i))
+                    count1++;
+                else
+                    count1=1;
+                if(count0 >= count1) ret++;
+                pre_c = '1';
+            }
+        }
+        return ret;
+    }
+}
